@@ -59,16 +59,16 @@ The main critieria for parameter selection is the trade-off between classificati
 
 From the table above, no.9 combination (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV) is the best one in trade-off between accurary and running time among all the 12 parameters configurations. Thus, I choose this parameters combination for the following classifier training. (HOG features with parameter setting : orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV). I didn't need to use any color features (color histogram or binned color features). Through HoG features, I could get satisfactory classification accuracy up to ~97.8.
 
-The corresponding part in parameters configuration is listed in `cell `.
+The corresponding part in parameters configuration is listed in `cell 6`.
 
 **3. Training a HoG+SVM classifier**
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-First, I feed the data into function extract_features() to compute the corresponding HoG features. The HoG feature extraction uses this parameter combination (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV) to obtain HoG features in dimention 1,188. The extraction is listed in `(cell 6)` and the corresponding feature extraction function is listed function extract_features() in `cell 5`. Then a feature normalizer is applied to scale the features to zero mean and unit variance using function StandardScaler() `cell 9`.
-Finally, I split the vehicle and non-vehicle data into 80% for training set (14,208 images) and 20% for test set (3,552 images) using function train_test_split() , `cell 6`
+First, I feed the data into function extract_features() to compute the corresponding HoG features. The HoG feature extraction uses this parameter combination (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV) to obtain HoG features in dimention 1,188. The extraction is listed in `(cell 6)` and the corresponding feature extraction function is listed function extract_features() in `cell 5`. Then a feature normalizer is applied to scale the features to zero mean and unit variance using function StandardScaler() `cell 9` to obtain scaled scaled_X. The label vector y is listed in `cell 7`.
+Finally for the SVM classifier training, I randomly split the vehicle and non-vehicle data into 80% for training set (14,208 images) and 20% for test set (3,552 images) using function train_test_split() `(cell 6)`. And the SVM classifier is trained using function LinearSVC(). `(cell 11)` and obtain the test accuracy as 97.97%, which meets the demands of subsequent detection task. 
 
-I trained a linear SVM using...
+**4. Sliding Window Search**
 
 ###Sliding Window Search
 
