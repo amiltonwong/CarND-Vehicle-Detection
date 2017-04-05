@@ -44,22 +44,18 @@ The main critieria for parameter selection is the trade-off between classificati
 
 | No. | orient, pix_per_cell, cell_per_block, hog_channel, colorspace  | Classifier | Accuracy | Training Time |
 | :-: | :------------------------------------------------------------: | :--------: | -------: | ------------: |
-| 1   |  11, 16, 2, ALL,  YUV                                          | Linear SVC | 97.89    | 1.06          |
-| 2   |  11, 16, 2, ALL,  RGB                                          | Linear SVC | 96.45    | 1.99          |
-| 3   |  11, 16, 2, ALL,  HSV                                          | Linear SVC | 97.66    | 1.14          |
-| 4   |  11, 16, 2, ALL,  HLS                                          | Linear SVC | 97.46    | 1.22          |
-| 5   |   9,  8, 2, ALL,  YUV                                          | Linear SVC | 98.14    | 4.77          |
-| 6   |   9,  8, 2, ALL,  RGB                                          | Linear SVC | 97.07    | 13.0          |
-| 7   |   9,  8, 2, ALL,  HSV                                          | Linear SVC | 98.06    | 6.39          |
-| 8   |   9,  8, 2, ALL,  HLS                                          | Linear SVC | 98.23    | 6.19          |
-| 9   |   7,  4, 2, ALL,  YUV                                          | Linear SVC | 98.06    | 50.48         |
-| 10  |   7,  4, 2, ALL,  RGB                                          | Linear SVC | 96.45    | 76.15         |
-| 11  |   7,  4, 2, ALL,  HSV                                          | Linear SVC | 98.03    | 61.06         |
-| 12  |   7,  4, 2, ALL,  HLS                                          | Linear SVC | 97.92    | 55.71         |
-| 13  |  13, 16, 2, ALL,  YUV                                          | Linear SVC | 98.03    | 1.08          |
-| 14  |  13, 16, 2, ALL,  RGB                                          | Linear SVC | 96.71    | 2.01          |
-| 15  |  13, 16, 2, ALL,  HSV                                          | Linear SVC | 97.80    | 1.22          |
-| 16  |  13, 16, 2, ALL,  HLS                                          | Linear SVC | 97.58    | 1.23          |
+| 1   |   9,  8, 2, ALL,  YUV                                          | Linear SVC | 98.14    | 4.77          |
+| 2   |   9,  8, 2, ALL,  RGB                                          | Linear SVC | 97.07    | 13.0          |
+| 3   |   9,  8, 2, ALL,  HSV                                          | Linear SVC | 98.06    | 6.39          |
+| 4   |   9,  8, 2, ALL,  HLS                                          | Linear SVC | 98.23    | 6.19          |
+| 5   |   7,  4, 2, ALL,  YUV                                          | Linear SVC | 98.06    | 50.48         |
+| 6   |   7,  4, 2, ALL,  RGB                                          | Linear SVC | 96.45    | 76.15         |
+| 7   |   7,  4, 2, ALL,  HSV                                          | Linear SVC | 98.03    | 61.06         |
+| 8   |   7,  4, 2, ALL,  HLS                                          | Linear SVC | 97.92    | 55.71         |
+| 9   |  11, 16, 2, ALL,  YUV                                          | Linear SVC | 97.89    | 1.06          |
+| 10  |  11, 16, 2, ALL,  RGB                                          | Linear SVC | 96.45    | 1.99          |
+| 11  |  11, 16, 2, ALL,  HSV                                          | Linear SVC | 97.66    | 1.14          |
+| 12  |  11, 16, 2, ALL,  HLS                                          | Linear SVC | 97.46    | 1.22          |
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  
 
