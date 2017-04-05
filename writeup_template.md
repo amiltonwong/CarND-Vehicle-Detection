@@ -39,8 +39,8 @@ The part of hog features extraction is lcoated in the function get_hog_features(
 
 ![alt text][image2]
 
-1.3 Parameters for HoG feature and comparison
-The main critieria for parameter selection is the trade-off between classification accurary and running time (e.g. training time in HoG+SVM classifier). Here the following table is the comparison on accurary and running time. I test it on the HoG+SVM classfication task, which is detailed in the following sections. 
+2. Parameters for HoG feature and comparison
+The main critieria for parameter selection is the trade-off between classification accurary and running time (e.g. training time in HoG+SVM classifier). The combination of parameters depends on orient, pix_per_cell, cell_per_block, hog_channel, colorspace.  The following table is the comparison on accurary and running time using different combinations. The accurary and running time are test on the HoG+SVM classfication task, which is detailed in the following sections. 
 
 | No. | orient, pix_per_cell, cell_per_block, hog_channel, colorspace  | Classifier | Accuracy | Training Time |
 | :-: | :------------------------------------------------------------: | :--------: | -------: | ------------: |
@@ -57,19 +57,9 @@ The main critieria for parameter selection is the trade-off between classificati
 | 11  |  11, 16, 2, ALL,  HSV                                          | Linear SVC | 97.66    | 1.14          |
 | 12  |  11, 16, 2, ALL,  HLS                                          | Linear SVC | 97.46    | 1.22          |
 
-From the table above, no.9 configuration (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV) is the best one in trade-off between accurary and running time among all the 12 parameters configurations. Thus I trained a classifier using HOG features with parameter setting as (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV). I didn't need to use any color features (color histogram or binned color features). Through HoG features, I could get satisfactory classification accuracy up to ~97.8.
+From the table above, no.9 combination (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV) is the best one in trade-off between accurary and running time among all the 12 parameters configurations. Thus, I choose this parameters combination for the following classifier training. (HOG features with parameter setting : orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV). I didn't need to use any color features (color histogram or binned color features). Through HoG features, I could get satisfactory classification accuracy up to ~97.8.
 
-
-I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  
-
-
-
-
-
-
-####2. Explain how you settled on your final choice of HOG parameters.
-
-I tried various combinations of parameters and...
+The corresponding part in parameters configuration is listed in `cell `.
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
