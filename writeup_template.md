@@ -50,9 +50,9 @@ The main critieria for parameter selection is the trade-off between classificati
 | 4   |  11, 16, 2, ALL,  HLS                                          | Linear SVC | 97.46    | 1.22          |
 | 5   |   9,  8, 2, ALL,  YUV                                          | Linear SVC | 98.14    | 4.77          |
 | 6   |   9,  8, 2, ALL,  RGB                                          | Linear SVC | 97.07    | 13.0          |
-| 7   |   9,  8, 2, ALL,  HSV                                          | Linear SVC | 97.52    | 19.21      |
-| 8   |   9,  8, 2, ALL,  HLS                                          | Linear SVC | 97.52    | 19.21      |
-| 9   |   7,  4, 2, ALL,  YUV                                          | Linear SVC | 97.52    | 19.21      |
+| 7   |   9,  8, 2, ALL,  HSV                                          | Linear SVC | 98.06    | 6.39          |
+| 8   |   9,  8, 2, ALL,  HLS                                          | Linear SVC | 98.23    | 6.19          |
+| 9   |   7,  4, 2, ALL,  YUV                                          | Linear SVC | 98.06    | 50.48         |
 | 10  |   7,  4, 2, ALL,  RGB                                          | Linear SVC | 97.52    | 19.21      |
 | 11  |   7,  4, 2, ALL,  HSV                                          | Linear SVC | 97.52    | 19.21      |
 | 12  |   7,  4, 2, ALL,  HLS                                          | Linear SVC | 97.52    | 19.21      |
