@@ -35,9 +35,8 @@ I started by reading in all of the `vehicle` and `non-vehicle` images (cell 2). 
 
 ![alt text][image1]
 
-The code for this step is contained in cell 2 in notebook `p5.ipynb`. 
 
-The part of hog features extraction is lcoated in the function get_hog_features() in cell 3 of `p5.ipynb`. The following two figures are examples using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+The part of hog features extraction is lcoated in the function get_hog_features() in cell 3 of `p5.ipynb`. The following two figures are examples (Vehicle and Non-vehicle) using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 ![alt text][image2]
 
