@@ -11,7 +11,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
+[image2]: ./examples2/hog_visual.png
 [image3]: ./examples/sliding_windows.jpg
 [image4]: ./examples/sliding_window.jpg
 [image5]: ./examples/bboxes_and_heat.png
@@ -37,7 +37,7 @@ I started by reading in all of the `vehicle` and `non-vehicle` images (line 19 t
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+Here is an example using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 
 ![alt text][image2]
