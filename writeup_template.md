@@ -42,18 +42,11 @@ The part of hog features extraction is lcoated in the function get_hog_features(
 1.3 Parameters for HoG feature and comparison
 The main critieria for parameter selection is the trade-off between classification accurary and running time. Here the following table is the comparison on accurary and running time. I test it on the HoG+SVM classfication task, which is detailed in the following sections. 
 
-| Configuration (above) | Classifier | Accuracy | Train Time |
-| :-------------------: | :--------: | -------: | ---------: |
-| 1                     | Linear SVC | 97.52    | 19.21      |
-| 2                     | Linear SVC | 91.92    | 5.53       |
-| 3                     | Linear SVC | 96.09    | 4.29       |
-| 4                     | Linear SVC | 95.72    | 4.33       |
-| 5                     | Linear SVC | 94.51    | 4.51       |
-| 6                     | Linear SVC | 92.34    | 4.97       |
-| 7                     | Linear SVC | 95.81    | 4.04       |
-| 8                     | Linear SVC | 96.28    | 5.04       |
-| 9                     | Linear SVC | 94.88    | 4.69       |
-| 10                    | Linear SVC | 93.78    | 4.59       |
+| No. | orient, pix_per_cell, cell_per_block  | Classifier | Accuracy | Train Time |
+| :-: | :-----------------------------------: | :--------: | -------: | ---------: |
+| 1   |                                       | Linear SVC | 97.52    | 19.21      |
+| 2   |                                       | Linear SVC | 97.52    | 19.21      |
+
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  
 
