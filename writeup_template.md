@@ -39,6 +39,9 @@ The part of hog features extraction is lcoated in the function get_hog_features(
 
 ![alt text][image2]
 
+1.3 Parameters for HoG feature and comparison
+The main critieria for parameter selection is the trade-off between classification accurary and running time. Here the table is the comparison on accurary and running time. I test it on the HoG+SVM classfication task, which is detailed in the following sections. 
+
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  
 
