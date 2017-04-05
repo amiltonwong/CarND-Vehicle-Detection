@@ -23,15 +23,17 @@ The goals / steps of this project are the following:
 
 ###Writeup / README
 
+The entire code are mainly located in `p5.ipynb`.
+
 **1. Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier**
 
 ###Histogram of Oriented Gradients (HOG)
 
 ####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in line 22 through 40 in file `pipeline_hog_det.py`.  
+The code for this step is contained in cell 2 in notebook `p5.ipynb`.  
 
-I started by reading in all of the `vehicle` and `non-vehicle` images (line 19 through 20).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+I started by reading in all of the `vehicle` and `non-vehicle` images (cell ).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
 
