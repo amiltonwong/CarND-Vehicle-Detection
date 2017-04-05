@@ -53,9 +53,13 @@ The main critieria for parameter selection is the trade-off between classificati
 | 7   |   9,  8, 2, ALL,  HSV                                          | Linear SVC | 98.06    | 6.39          |
 | 8   |   9,  8, 2, ALL,  HLS                                          | Linear SVC | 98.23    | 6.19          |
 | 9   |   7,  4, 2, ALL,  YUV                                          | Linear SVC | 98.06    | 50.48         |
-| 10  |   7,  4, 2, ALL,  RGB                                          | Linear SVC | 97.52    | 19.21      |
-| 11  |   7,  4, 2, ALL,  HSV                                          | Linear SVC | 97.52    | 19.21      |
-| 12  |   7,  4, 2, ALL,  HLS                                          | Linear SVC | 97.52    | 19.21      |
+| 10  |   7,  4, 2, ALL,  RGB                                          | Linear SVC | 96.45    | 76.15         |
+| 11  |   7,  4, 2, ALL,  HSV                                          | Linear SVC | 98.03    | 61.06         |
+| 12  |   7,  4, 2, ALL,  HLS                                          | Linear SVC | 97.92    | 55.71         |
+| 13  |  13, 16, 2, ALL,  YUV                                          | Linear SVC | 98.03    | 1.08          |
+| 14  |  13, 16, 2, ALL,  RGB                                          | Linear SVC | 96.71    | 2.01          |
+| 15  |  13, 16, 2, ALL,  HSV                                          | Linear SVC | 97.80    | 1.22          |
+| 16  |  13, 16, 2, ALL,  HLS                                          | Linear SVC | 97.58    | 1.23          |
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  
 
