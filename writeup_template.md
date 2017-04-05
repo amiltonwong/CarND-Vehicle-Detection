@@ -27,14 +27,13 @@ The entire code are mainly located in `p5.ipynb`.
 
 **1. Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier**
 
-###Histogram of Oriented Gradients (HOG)
-
-####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
+1.1 Load data for vehicle and non-vehicle
 
 I started by reading in all of the `vehicle` and `non-vehicle` images (cell 2). The data comes from GTI and KITTI extraction images. 8,792 images for vehicles and 8,968 images for non-vehicles. The resolution for all the images is 64x64 pixel. Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
 
+1.2 HoG feature extraction
 
 The part of hog features extraction is lcoated in the function get_hog_features() in cell 3 of `p5.ipynb`. The following two figures are examples (Vehicle and Non-vehicle) using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
