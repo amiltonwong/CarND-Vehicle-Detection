@@ -37,12 +37,17 @@ I started by reading in all of the `vehicle` and `non-vehicle` images (cell 2). 
 
 The code for this step is contained in cell 2 in notebook `p5.ipynb`. 
 
-I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
-
-Here is an example using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
-
+The part of hog features extraction is lcoated in the function get_hog_features() in cell 3 of `p5.ipynb`. The following two figures are examples using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 ![alt text][image2]
+
+
+I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  
+
+
+
+
+
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
