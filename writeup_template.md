@@ -31,11 +31,11 @@ The entire code are mainly located in `p5.ipynb`.
 
 ####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in cell 2 in notebook `p5.ipynb`.  
-
-I started by reading in all of the `vehicle` and `non-vehicle` images (cell ).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+I started by reading in all of the `vehicle` and `non-vehicle` images (cell 2). The data comes from GTI and KITTI extraction images. 8,792 images for vehicles and 8,968 images for non-vehicles. The resolution for all the images is 64x64 pixel. Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
+
+The code for this step is contained in cell 2 in notebook `p5.ipynb`. 
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
