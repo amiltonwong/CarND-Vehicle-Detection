@@ -39,7 +39,7 @@ The part of hog features extraction is lcoated in the function get_hog_features(
 
 ![alt text][image2]
 
-2. Parameters for HoG feature and comparison
+**2. Parameters for HoG feature and comparison**
 The main critieria for parameter selection is the trade-off between classification accurary and running time (e.g. training time in HoG+SVM classifier). The combination of parameters depends on orient, pix_per_cell, cell_per_block, hog_channel, colorspace.  The following table is the comparison on accurary and running time using different combinations. The accurary and running time are test on the HoG+SVM classfication task, which is detailed in the following sections. 
 
 | No. | orient, pix_per_cell, cell_per_block, hog_channel, colorspace  | Classifier | Accuracy | Training Time |
@@ -61,7 +61,12 @@ From the table above, no.9 combination (orient=11, pix_per_cell=16, cell_per_blo
 
 The corresponding part in parameters configuration is listed in `cell `.
 
+**3. Training a HoG+SVM classifier**
+
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+
+First, I feed the data into function extract_features() to compute the corresponding HoG features. The HoG feature extraction uses this parameter combination (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV) to obtain HoG features in dimention 1,188. The extraction is listed in `(cell 6)` and the corresponding feature extraction function is listed function extract_features() in `cell 5`. Then a feature normalizer is applied to scale the features to zero mean and unit variance using function StandardScaler() `cell 9`.
+Finally, I split the vehicle and non-vehicle data into 80% for training set (14,208 images) and 20% for test set (3,552 images) using function train_test_split() , `cell 6`
 
 I trained a linear SVM using...
 
