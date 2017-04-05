@@ -29,9 +29,9 @@ The goals / steps of this project are the following:
 
 ####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
+The code for this step is contained in line 22 through 40 in file `pipeline_hog_det.py`.  
 
-I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+I started by reading in all of the `vehicle` and `non-vehicle` images (line 19 through 20).  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
 ![alt text][image1]
 
