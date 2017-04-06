@@ -85,8 +85,8 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ![alt text][image4]
 
 I adapted the function find_cars() `cell 12` from the lesson materials.
-In this function, the searching area can be determined to ignore useless search area such as top part of the image `(line 11 in cell 12)`. 
- To reduce the time in computation HoG features for each window separately, the whole image is firstly extracted into HoG features `(in line of cell )`. Then this full-image feature
+In this function, the searching area can be determined to ignore useless search area such as top part of the image `(line 11 in cell 12)`. Color spaces such as RGB, YUV, HLS, HSV can be specified`(line 14 -- 21 in cell 12)`. The scale of the image will be rescaled when input parameter scale is other than 1 `(line 23 -- 26 in cell 12)`. The searching blocks and steps are listed in `(line 36 -- 45 in cell 12)`
+ To reduce the time in computation HoG features for each window separately, the whole image is firstly extracted into HoG features `(in line 47-51 of cell 12)`. Then this full-image feature
  The method combines HOG feature extraction with a sliding window search, but rather than performing feature extraction on each window individually which can be time consuming, the HOG features are extracted for the entire image (or a selected portion of it) and then these full-image features are subsampled according to the size of the window and then fed to the classifier. The method performs the classifier prediction on the HOG features for each window region and returns a list of rectangle objects corresponding to the windows that generated a positive ("car") prediction.
 
 
