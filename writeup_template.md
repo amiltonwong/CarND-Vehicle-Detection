@@ -93,6 +93,9 @@ The total combinations of scale and searching area are listed in function proces
 
 ![alt text][image4]
 
+To reduce the false positives, I choose the following approach:
+
+
 ### Video Implementation
 
 ####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
