@@ -83,7 +83,12 @@ I decided to search random window positions at random scales all over the image 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
----
+
+I adapted the method find_cars from the lesson materials. 
+ To reduce the time in computation HoG features for each window separately, the whole image is firstly extracted into HoG features `(in line of cell )`. Then this full-image feature
+ The method combines HOG feature extraction with a sliding window search, but rather than performing feature extraction on each window individually which can be time consuming, the HOG features are extracted for the entire image (or a selected portion of it) and then these full-image features are subsampled according to the size of the window and then fed to the classifier. The method performs the classifier prediction on the HOG features for each window region and returns a list of rectangle objects corresponding to the windows that generated a positive ("car") prediction.
+
+
 
 ### Video Implementation
 
