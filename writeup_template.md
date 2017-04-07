@@ -113,34 +113,18 @@ and false positives are solved.
 
 The entire pipeline for image detection (with heatmap thresholding) is located in `cell 22`.
 
-To improve the detection smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 15 frames). 
 
 
-### Video Implementation
+
+**5. Video Implementation**
 
 Here's the [link](https://youtu.be/jJW2VLUC6vI) for the detection output (./project_video.mp4)
 
-
-####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
-
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
-
-Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
-
-### Here are six frames and their corresponding heatmaps:
-
-![alt text][image5]
-
-### 
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
-
-
+For the detection in video, it is easy to have detection suffering jittery bounding boxes. To improve the detection smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 20 frames). I choose to average the heatmaps from the recent 20 frames for each new input frame from video: create a class to store data from video, with member variable to store the detection in previous 20 frames. Rather than using a constant scalar in thresholding, I choose a adapative value computed from previous detection history. The corresponding code are located in `cell 24` and `line 59-66 in cell 25`.
 
 ---
 
-###Discussion
+**6. Discussion**
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
