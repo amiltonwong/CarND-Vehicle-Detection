@@ -16,8 +16,8 @@ The goals / steps of this project are the following:
 [image4]: ./output_images/examples_det1.png
 [image5]: ./output_images/heatmap.png
 [image5.5]: ./output_images/heatmap_threshold.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
+[image6]: ./output_images/labels_map.png
+[image7]: ./output_images/examples_det2.png
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
@@ -98,14 +98,16 @@ However, the problems of overlapping detections and obvious false positives exis
 
 
 To reduce the quantity of the false positives and combine overlapping detections, I choose the following approach as suggested in class materials:
-1. add heatmap to discriminate the true positves and false postives and filter out latter. The correspondong part is located in
-function add_heat() in `cell `, which adds "heat" (+=1) for all pixels within windows where a positive detection is reported by my classifier. The individual heat-maps for the above six images look like the following figure:
+1. add heatmap to discriminate the true positves and false postives and filter out latter. 
+
+The correspondong part is located in function add_heat() in `cell `, which adds "heat" (+=1) for all pixels within windows where a positive detection is reported by my classifier. The individual heat-maps for the above six images look like the following figure:
 
 ![alt text][image5]
 
 We could observe that the true postives located in "hot" area in heatmap. The false positives are located in "cool" area. Thus, we could filter out false positives by simply thresholding those "cool" area.
 
-2. impose a threshold to reject areas affected by false positives
+2. impose a threshold to reject areas affected by false positives.
+
 function apply_threshold() in `cell ` lists the thresholding function. I choose value 3 for threshold parameter. The following figure is thresholded heatmap, we could see the false positives are removed and overlapping detection are reduced.
 
 ![alt text][image5.5]
