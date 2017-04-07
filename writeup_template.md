@@ -98,7 +98,7 @@ However, the problems of overlapping detections and obvious false positives exis
 
 To reduce the quantity of the false positives and combine overlapping detections, I choose the following approach as suggested in class materials:
 1. add heatmap to discriminate the true positves and false postives and filter out latter. The correspondong part is located in
-function add_heat() in `cell `, which adds "heat" (+=1) for all pixels within windows where a positive detection is reported by my classifier. The individual heat-maps for the above images look like the following figure:
+function add_heat() in `cell `, which adds "heat" (+=1) for all pixels within windows where a positive detection is reported by my classifier. The individual heat-maps for the above six images look like the following figure:
 
 ![alt text][image5]
 
