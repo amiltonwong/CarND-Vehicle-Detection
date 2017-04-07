@@ -71,18 +71,6 @@ Finally for the SVM classifier training, I randomly split the vehicle and non-ve
 
 **4. Sliding Window Search**
 
-###Sliding Window Search
-
-####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
-
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
-
-![alt text][image3]
-
-####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
-
-
-
 I adapted the function find_cars() `cell 12` from the lesson materials.
 In this function, the searching area can be determined to ignore useless search area such as top part of the image `(line 11 in cell 12)`. Color spaces such as RGB, YUV, HLS, HSV can be specified`(line 14-21 in cell 12)`. The scale of the image will be rescaled when input parameter scale is other than 1 `(line 23-26 in cell 12)`. The searching blocks and steps are listed in `(line 36-45 in cell 12)`.  Instead of explicity determine the percentage of overlap, I define how many cells to step (e.g. 2)  `(line 43 in cell 12)`
  To reduce the time in computation HoG features for each window separately, the whole image is firstly extracted into HoG features `(in line 47-51 of cell 12)`. Then this full-image feature is divided into patches to get subsampled ones according to the size of the window (64 pixel) and loops through all the possible windows(patches) `(in line 53-67 of cell 12)`. The subsampled features are then fed to the classifier for predicting whether is belongs to vechicle or not `(in line 70 of cell 12)`. If vehicle was found, the current rectangle of the patch will be added into list rectangles as the return of the function find_cars() `(in line 72-78 of cell 12)`, which is equivalent to area overlapping.
@@ -112,9 +100,15 @@ function apply_threshold() in `cell ` lists the thresholding function. I choose 
 
 ![alt text][image5.5]
 
-Then, label() funtion is applied to obtain labels image and put bounding boxes around the labeled regions. The corresponding code is located in `cell`.
+Then, label() funtion is applied to obtain labels image.
+Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
+
+![alt text][image6]
+
+Then, put bounding boxes around the labeled regions. The corresponding code is located in `cell`.
 The following figure shows the improved detection result.
 
+![alt text][image7]
 
 To improve the smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 15 frames). 
 
@@ -135,8 +129,7 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ![alt text][image5]
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
+### 
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
 ![alt text][image7]
