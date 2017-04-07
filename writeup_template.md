@@ -14,7 +14,7 @@ The goals / steps of this project are the following:
 [image2]: ./examples2/hog_visual.png
 [image3]: ./examples/sliding_windows.jpg
 [image4]: ./output_images/examples_det1.png
-[image5]: ./examples/bboxes_and_heat.png
+[image5]: ./output_images/heatmap.png
 [image6]: ./examples/labels_map.png
 [image7]: ./examples/output_bboxes.png
 [video1]: ./project_video.mp4
@@ -96,9 +96,11 @@ The total combinations of scale and searching area are listed in function proces
 However, the problems of overlapping detections and obvious false positives exist as in the figure above.
 
 
-To reduce the quantity of the false positives and overlapping detections, I choose the following approach as suggested in class materials:
+To reduce the quantity of the false positives and combine overlapping detections, I choose the following approach as suggested in class materials:
 1. add heatmap to discriminate the true positves and false postives and filter out latter. The correspondong part is located in
-function add_heat() in `cell `, which appends
+function add_heat() in `cell `, which adds "heat" (+=1) for all pixels within windows where a positive detection is reported by my classifier. The individual heat-maps for the above images look like the following figure:
+
+![alt text][image5]
 
 2. 
 function apply_threshold()
