@@ -93,7 +93,11 @@ The total combinations of scale and searching area are listed in function proces
 
 ![alt text][image4]
 
-To reduce the false positives, I choose the following approach:
+To reduce the quantity of the false positives and , I choose the following approach:
+1. add heatmap to discriminate the true positves and false postives and filter out latter. The correspondong
+
+
+To improve the smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 15 frames). 
 
 
 ### Video Implementation
