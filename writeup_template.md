@@ -15,6 +15,7 @@ The goals / steps of this project are the following:
 [image3]: ./examples/sliding_windows.jpg
 [image4]: ./output_images/examples_det1.png
 [image5]: ./output_images/heatmap.png
+[image5.5]: ./output_images/heatmap_threshold.png
 [image6]: ./examples/labels_map.png
 [image7]: ./examples/output_bboxes.png
 [video1]: ./project_video.mp4
@@ -102,8 +103,16 @@ function add_heat() in `cell `, which adds "heat" (+=1) for all pixels within wi
 
 ![alt text][image5]
 
-2. 
-function apply_threshold()
+We could observe that the true postives located in "hot" area in heatmap. The false positives are located in "cool" area. Thus, we could filter out false positives by simply thresholding those "cool" area.
+
+2. impose a threshold to reject areas affected by false positives
+function apply_threshold() in `cell ` lists the thresholding function. I choose value 3 for threshold parameter. The following figure is thresholded heatmap, we could see the false positives are removed and overlapping detection are reduced.
+
+![alt text][image5.5]
+
+Then, label() funtion is applied to obtain labels image and put bounding boxes around the labeled regions. The corresponding code is located in `cell`.
+The following figure shows the improved detection result.
+
 
 To improve the smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 15 frames). 
 
