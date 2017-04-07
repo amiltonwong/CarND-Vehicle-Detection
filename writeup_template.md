@@ -13,7 +13,7 @@ The goals / steps of this project are the following:
 [image1]: ./examples/car_not_car.png
 [image2]: ./examples2/hog_visual.png
 [image3]: ./examples/sliding_windows.jpg
-[image4]: ./output_images/examples_det.png
+[image4]: ./output_images/examples_det1.png
 [image5]: ./examples/bboxes_and_heat.png
 [image6]: ./examples/labels_map.png
 [image7]: ./examples/output_bboxes.png
@@ -85,17 +85,23 @@ I decided to search random window positions at random scales all over the image 
 I adapted the function find_cars() `cell 12` from the lesson materials.
 In this function, the searching area can be determined to ignore useless search area such as top part of the image `(line 11 in cell 12)`. Color spaces such as RGB, YUV, HLS, HSV can be specified`(line 14-21 in cell 12)`. The scale of the image will be rescaled when input parameter scale is other than 1 `(line 23-26 in cell 12)`. The searching blocks and steps are listed in `(line 36-45 in cell 12)`.  Instead of explicity determine the percentage of overlap, I define how many cells to step (e.g. 2)  `(line 43 in cell 12)`
  To reduce the time in computation HoG features for each window separately, the whole image is firstly extracted into HoG features `(in line 47-51 of cell 12)`. Then this full-image feature is divided into patches to get subsampled ones according to the size of the window (64 pixel) and loops through all the possible windows(patches) `(in line 53-67 of cell 12)`. The subsampled features are then fed to the classifier for predicting whether is belongs to vechicle or not `(in line 70 of cell 12)`. If vehicle was found, the current rectangle of the patch will be added into list rectangles as the return of the function find_cars() `(in line 72-78 of cell 12)`, which is equivalent to area overlapping.
-  The method I used combines HOG feature extraction with a sliding window search, but rather than performing feature extraction on each window individually which can be time consuming, the HOG features are extracted for the entire image (or a selected portion of it) and then these full-image features are subsampled according to the size of the window and then fed to the classifier. The method performs the classifier prediction on the HOG features for each window region and returns a list of rectangle objects corresponding to the windows that generated a positive ("vehicle") prediction.
+  The method I used combines HOG feature extraction with a sliding window search, but rather than performing feature extraction on each window individually which can be time consuming, the HOG features are extracted for the entire image (or a selected portion of it) and then these full-image features are subsampled according to the size of the window and then fed to the classifier. The method performs the classifier prediction on the HOG features for each window region and returns a list of rectangle objects corresponding to the windows that generated a positive ("vehicle") prediction. Then, draw the detected rectangle in image.`(cell 13)`
 
 The following figure are the demonstration of my detection pipeline.
 As the one of test images (test3.jpg) contains a vehicle in small size. I append more small scales such as scale=0.8, 0.9, 1.0, 1.1. Also, when the vehicle appears near bottom part of the image, in which the vechicle exhibits a larger size. Thus bigger scale= 3.0,3.5 are appended.
-The total combinations of scale and searching area are listed in function process_frame() in `cell `. Ultimately I searched on eigtht scales using YUV 3-channel HOG featuree as the input feature vector, which provided a nice result.  Here are some example images:
+The total combinations of scale and searching area are listed in function process_frame() in `cell `. Ultimately I searched on eight scales using YUV 3-channel HOG featuree as the input feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
 
-To reduce the quantity of the false positives and , I choose the following approach:
-1. add heatmap to discriminate the true positves and false postives and filter out latter. The correspondong
+However, the problems of overlapping detections and obvious false positives exist as in the figure above.
 
+
+To reduce the quantity of the false positives and overlapping detections, I choose the following approach as suggested in class materials:
+1. add heatmap to discriminate the true positves and false postives and filter out latter. The correspondong part is located in
+function add_heat() in `cell `, which appends
+
+2. 
+function apply_threshold()
 
 To improve the smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 15 frames). 
 
