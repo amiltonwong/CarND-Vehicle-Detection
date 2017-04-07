@@ -88,7 +88,7 @@ However, the problems of overlapping detections and obvious false positives exis
 To reduce the quantity of the false positives and combine overlapping detections, I choose the following approach as suggested in class materials:
 1. add heatmap to discriminate the true positves and false postives and filter out latter. 
 
-The correspondong part is located in function add_heat() in `cell `, which adds "heat" (+=1) for all pixels within windows where a positive detection is reported by my classifier. The individual heat-maps for the above six images look like the following figure:
+The correspondong part is located in function add_heat() in `cell 16`, which adds "heat" (+=1) for all pixels within windows where a positive detection is reported by my classifier. The individual heat-maps for the above six images look like the following figure:
 
 ![alt text][image5]
 
@@ -96,7 +96,7 @@ We could observe that the true postives located in "hot" area in heatmap. The fa
 
 2. impose a threshold to reject areas affected by false positives.
 
-function apply_threshold() in `cell ` lists the thresholding function. I choose value 3 for threshold parameter. The following figure is thresholded heatmap, we could see the false positives are removed and overlapping detection are reduced.
+function apply_threshold() in `cell 18` lists the thresholding function. I choose value 3 for threshold parameter. The following figure is thresholded heatmap, we could see the false positives are removed and overlapping detection are reduced.
 
 ![alt text][image5.5]
 
@@ -105,17 +105,19 @@ Here is the output of `scipy.ndimage.measurements.label()` on the integrated hea
 
 ![alt text][image6]
 
-Then, put bounding boxes around the labeled regions. The corresponding code is located in `cell`.
-The following figure shows the improved detection result.
+Then, put bounding boxes around the labeled regions. The corresponding code is located in `cell 21`.
+The following figure shows the improved detection result. We could see the problems of overlapping detection 
+and false positives are solved.
 
 ![alt text][image7]
 
-To improve the smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 15 frames). 
+The entire pipeline for image detection (with heatmap thresholding) is located in `cell 22`.
+
+To improve the detection smoothness of the detection across consecutive frames, I append the function to average consecutive frames (e.g. consecutive 15 frames). 
 
 
 ### Video Implementation
 
-####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 Here's the [link](https://youtu.be/jJW2VLUC6vI) for the detection output (./project_video.mp4)
 
 
