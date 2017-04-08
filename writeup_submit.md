@@ -24,7 +24,7 @@ The goals / steps of this project are the following:
 
 ###Writeup / README
 
-The entire code are mainly located in `p5.ipynb`.
+The entire code are mainly located in `p5_submit.ipynb`.
 
 **1. Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier**
 
@@ -36,7 +36,7 @@ I started by reading in all of the `vehicle` and `non-vehicle` images (cell 2). 
 
 1.2 HoG feature extraction
 
-The part of hog features extraction is lcoated in the function get_hog_features() in cell 3 of `p5.ipynb`. The following two figures are examples (Vehicle and Non-vehicle) using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+The part of hog features extraction is lcoated in the function get_hog_features() in cell 3 of `p5_submit.ipynb`. The following two figures are examples (Vehicle and Non-vehicle) using the blue channel of `RGB` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 ![alt text][image2]
 
@@ -64,21 +64,19 @@ The corresponding part in parameters configuration is listed in `cell 6`.
 
 **3. Training a HoG+SVM classifier**
 
-####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
-
 First, I feed the data into function extract_features() to compute the corresponding HoG features. The HoG feature extraction uses this parameter combination (orient=11, pix_per_cell=16, cell_per_block=2, hog_channel=ALL, colorspace=YUV) to obtain HoG features in dimention 1,188. The extraction is listed in `(cell 6)` and the corresponding feature extraction function is listed function extract_features() in `cell 5`. Then a feature normalizer is applied to scale the features to zero mean and unit variance using function StandardScaler() `cell 9` to obtain scaled scaled_X. The label vector y is listed in `cell 7`.
-Finally for the SVM classifier training, I randomly split the vehicle and non-vehicle data into 80% for training set (14,208 images) and 20% for test set (3,552 images) using function train_test_split() `(cell 6)`. And the SVM classifier is trained using function LinearSVC(). `(cell 11)` and obtain the test accuracy as 97.97%, which meets the demands of subsequent detection task. 
+Finally for the SVM classifier training, I randomly split the vehicle and non-vehicle data into 80% for training set (14,208 images) and 20% for test set (3,552 images) using function train_test_split() `(cell 6)`. And the SVM classifier is trained using function LinearSVC() `(cell 11)` and obtain the test accuracy as 97.97%, which meets the demands of subsequent detection task. 
 
 **4. Sliding Window Search**
 
-I adapted the function find_cars() `cell 12` from the lesson materials.
-In this function, the searching area can be determined to ignore useless search area such as top part of the image `(line 11 in cell 12)`. Color spaces such as RGB, YUV, HLS, HSV can be specified`(line 14-21 in cell 12)`. The scale of the image will be rescaled when input parameter scale is other than 1 `(line 23-26 in cell 12)`. The searching blocks and steps are listed in `(line 36-45 in cell 12)`.  Instead of explicity determine the percentage of overlap, I define how many cells to step (e.g. 2)  `(line 43 in cell 12)`
- To reduce the time in computation HoG features for each window separately, the whole image is firstly extracted into HoG features `(in line 47-51 of cell 12)`. Then this full-image feature is divided into patches to get subsampled ones according to the size of the window (64 pixel) and loops through all the possible windows(patches) `(in line 53-67 of cell 12)`. The subsampled features are then fed to the classifier for predicting whether is belongs to vechicle or not `(in line 70 of cell 12)`. If vehicle was found, the current rectangle of the patch will be added into list rectangles as the return of the function find_cars() `(in line 72-78 of cell 12)`, which is equivalent to area overlapping.
-  The method I used combines HOG feature extraction with a sliding window search, but rather than performing feature extraction on each window individually which can be time consuming, the HOG features are extracted for the entire image (or a selected portion of it) and then these full-image features are subsampled according to the size of the window and then fed to the classifier. The method performs the classifier prediction on the HOG features for each window region and returns a list of rectangle objects corresponding to the windows that generated a positive ("vehicle") prediction. Then, draw the detected rectangle in image.`(cell 13)`
+I adapted the function find_cars() `cell 12` from the class materials.
+In this function, the searching area can be determined to ignore useless search area such as top part of the image `(line 11 in cell 12)`. Color spaces such as RGB, YUV, HLS, HSV can be specified`(line 14-21 in cell 12)`. The scale of the image will be rescaled when input parameter scale is other than 1 `(line 23-26 in cell 12)`. The searching blocks and steps are listed in `(line 36-45 in cell 12)`.  Instead of explicity determining the percentage of overlap, I define how many cells to step through(e.g. 2)  `(line 43 in cell 12)`.
+ To reduce the time in computation HoG features for each window separately, the whole image is firstly extracted into HoG features `(in line 47-51 of cell 12)`. Then this full-image feature is divided into patches to get subsampled ones according to the size of the window (64 pixel) and loops through all the possible windows(patches) `(in line 53-67 of cell 12)`. The subsampled features are then fed to the classifier for predicting whether it is belongs to vechicle or not `(in line 70 of cell 12)`. If vehicle was found, the current rectangle of the patch will be added into list rectangles as the return of the function find_cars() `(in line 72-78 of cell 12)`, which is equivalent to area overlapping.
+ Then, draw the detected rectangle in image.`(cell 13)`
 
-The following figure are the demonstration of my detection pipeline.
-As the one of test images (test3.jpg) contains a vehicle in small size. I append more small scales such as scale=0.8, 0.9, 1.0, 1.1. Also, when the vehicle appears near bottom part of the image, in which the vechicle exhibits a larger size. Thus bigger scale= 3.0,3.5 are appended.
-The total combinations of scale and searching area are listed in function process_frame() in `cell `. Ultimately I searched on eight scales using YUV 3-channel HOG featuree as the input feature vector, which provided a nice result.  Here are some example images:
+The following figure is the demonstration of my detection pipeline.
+As one of test images (test3.jpg) contains a vehicle in small size. I append more small scales such as scale=0.8, 0.9, 1.0, 1.1. Also, when the vehicle appears near bottom part of the image, in which the vechicle exhibits a larger size. Thus bigger scale= 3.0,3.5 are appended.
+The total combinations of scale and searching area are listed in function process_frame() in `cell 14`. Ultimately I searched on eight scales using YUV 3-channel HOG featuree as the input feature vector, which provided a nice result.  Here are some example images:
 
 ![alt text][image4]
 
